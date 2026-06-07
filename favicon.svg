@@ -1,13 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="mark" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#73e57f"/>
-      <stop offset="1" stop-color="#ffbf00"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="#092c18"/>
-  <circle cx="32" cy="32" r="22" fill="url(#mark)"/>
-  <path fill="#092c18" d="M23.2 12.8h17.6v7.2H23.2z"/>
-  <path fill="#092c18" d="M27.8 20h8.4v25.2h-8.4z"/>
-  <path fill="#092c18" d="M23.2 45.2h17.6v7.2H23.2z"/>
+<svg width="680" height="680" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Wabi-sabi brush asterisk</title>
+  <desc>Irregular hand-brushed starburst arms in warm earthy tones, asymmetric and imperfect</desc>
+
+  <g transform="translate(338,342)">
+    <path d="M-4,-8 C-12,-52 -28,-118 -38,-205 C-35,-218 -22,-222 -12,-210 C-4,-198 6,-128 8,-58 L5,-8 Z" fill="#73E57F" transform="rotate(-8)"/>
+    <path d="M-3,-10 C-6,-38 -8,-78 -4,-128 C-2,-138 8,-140 12,-130 C16,-118 10,-74 6,-42 L4,-10 Z" fill="#FFBF00" transform="rotate(24)"/>
+    <path d="M-9,-10 C-22,-58 -42,-128 -58,-202 C-54,-218 -36,-224 -22,-212 C-10,-200 2,-122 6,-62 L7,-10 Z" fill="#9AF2A2" transform="rotate(54)"/>
+    <path d="M-4,-9 C-8,-44 -14,-102 -10,-176 C-8,-190 6,-196 14,-184 C20,-170 10,-100 6,-50 L5,-9 Z" fill="#FFD55A" transform="rotate(84)"/>
+    <path d="M-2,-10 C-4,-40 -4,-90 2,-158 C4,-168 10,-170 13,-160 C16,-148 10,-90 6,-46 L3,-10 Z" fill="#092C18" transform="rotate(112)"/>
+    <path d="M-6,-9 C-16,-50 -32,-112 -44,-190 C-40,-206 -24,-212 -12,-200 C-2,-188 8,-114 8,-56 L6,-9 Z" fill="#73E57F" transform="rotate(143)"/>
+    <path d="M-8,-10 C-18,-48 -28,-108 -22,-180 C-18,-196 0,-202 12,-190 C22,-178 12,-106 6,-52 L7,-10 Z" fill="#0F3A22" transform="rotate(174)"/>
+    <path d="M-7,-9 C-14,-36 -20,-72 -16,-120 C-12,-132 4,-136 12,-126 C18,-114 10,-68 5,-36 L5,-9 Z" fill="#B8F8BD" transform="rotate(202)"/>
+    <path d="M-3,-9 C-8,-48 -12,-110 -6,-196 C-2,-212 10,-216 16,-204 C22,-190 12,-112 7,-54 L5,-9 Z" fill="#FFC933" transform="rotate(232)"/>
+    <path d="M-6,-10 C-14,-52 -26,-114 -28,-188 C-24,-202 -8,-208 4,-196 C14,-182 8,-112 5,-56 L5,-10 Z" fill="#14502C" transform="rotate(262)"/>
+    <path d="M-2,-9 C-4,-36 -4,-78 0,-132 C2,-142 10,-144 14,-134 C16,-122 10,-76 6,-40 L3,-9 Z" fill="#DFFF8E" transform="rotate(293)"/>
+    <path d="M-5,-9 C-12,-48 -20,-112 -16,-192 C-12,-208 4,-214 14,-202 C22,-188 10,-110 6,-54 L6,-9 Z" fill="#FFBF00" transform="rotate(324)"/>
+  </g>
 </svg>
