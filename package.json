@@ -1,0 +1,13 @@
+{
+  "name": "inventadors-pages",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy --config wrangler.jsonc",
+    "dev": "wrangler dev --config wrangler.jsonc",
+    "start": "wrangler dev --config wrangler.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.54.0"
+  }
+}

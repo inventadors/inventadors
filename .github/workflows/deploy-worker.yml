@@ -1,17 +1,27 @@
-name: Deploy AI Worker
+name: Deploy Inventadors Pages Worker
 
 on:
   push:
     branches:
       - main
     paths:
-      - "**"
+      - "*.html"
+      - ".assetsignore"
+      - ".gitignore"
+      - "package.json"
+      - "wrangler.jsonc"
       - ".github/workflows/deploy-worker.yml"
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: production
+    permissions:
+      contents: read
+    concurrency:
+      group: inventadors-pages-worker
+      cancel-in-progress: true
 
     steps:
       - name: Checkout
@@ -21,10 +31,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Check Cloudflare secrets
         env:
