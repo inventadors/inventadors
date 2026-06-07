@@ -4,6 +4,16 @@
   "main": "src/index.mjs",
   "compatibility_date": "2026-06-07",
   "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "inventadors.com/*",
+      "zone_name": "inventadors.com"
+    },
+    {
+      "pattern": "www.inventadors.com/*",
+      "zone_name": "inventadors.com"
+    }
+  ],
   "observability": {
     "enabled": true
   },
