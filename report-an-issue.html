@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report an Issue</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+
+    body {
+      background:#ffffff;
+      font-family:'Work Sans', sans-serif;
+      color:#202123;
+    }
+
+    .container {
+      max-width:760px;
+      margin:0 auto;
+      padding:60px 20px 100px;
+    }
+
+    h1 {
+      font-family:'Paytone One', sans-serif;
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .subtitle {
+      font-size:14px;
+      color:#6b7280;
+      margin-bottom:30px;
+    }
+
+    .section {
+      margin-bottom:30px;
+    }
+
+    .section-title {
+      font-size:18px;
+      font-weight:600;
+      margin-bottom:10px;
+    }
+
+    .divider {
+      height:1px;
+      background:#e5e7eb;
+      margin-bottom:20px;
+    }
+
+    .field {
+      margin-bottom:16px;
+    }
+
+    label {
+      display:block;
+      font-size:13px;
+      margin-bottom:6px;
+      color:#374151;
+    }
+
+    input, select, textarea {
+      width:100%;
+      border:1px solid #e5e7eb;
+      border-radius:10px;
+      padding:12px 14px;
+      font-size:14px;
+      font-family:'Work Sans', sans-serif;
+      outline:none;
+      background:#fff;
+    }
+
+    textarea {
+      min-height:120px;
+      resize:vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color:#111;
+    }
+
+    .row {
+      display:flex;
+      gap:12px;
+    }
+
+    .row .field {
+      flex:1;
+    }
+
+    .card {
+      border:1px solid #e5e7eb;
+      border-radius:12px;
+      padding:18px;
+      background:#fafafa;
+      font-size:14px;
+      color:#4b5563;
+    }
+
+    .submit-btn {
+      width:100%;
+      margin-top:10px;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#111;
+      color:#fff;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    .submit-btn:hover {
+      background:#000;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Report an Issue</h1>
+    <div class="subtitle">Describe the problem you're facing and our team will investigate it.</div>
+
+    <!-- Info -->
+    <div class="section">
+      <div class="section-title">Before you report</div>
+      <div class="divider"></div>
+
+      <div class="card">
+        Please check the Help Center first. Many issues can be resolved instantly without waiting for support.
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="section">
+      <div class="section-title">Issue details</div>
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="field">
+          <label>Name</label>
+          <input placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input placeholder="you@example.com" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Issue type</label>
+        <select>
+          <option>Bug</option>
+          <option>Payment issue</option>
+          <option>Account problem</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Subject</label>
+        <input placeholder="Short summary of the issue" />
+      </div>
+
+      <div class="field">
+        <label>Description</label>
+        <textarea placeholder="Explain the issue in detail..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Steps to reproduce</label>
+        <textarea placeholder="1. Go to...
+2. Click on...
+3. Error appears..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Attachments (optional)</label>
+        <input type="file" />
+      </div>
+
+      <button class="submit-btn">Submit Report</button>
+    </div>
+
+  </div>
+
+</body>
+</html>
