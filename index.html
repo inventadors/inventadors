@@ -7,7 +7,7 @@
   <title>Inventadors | Inventing solutions for mankind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #73e57f;
@@ -30,13 +30,9 @@
       --font-body: "Work Sans", system-ui, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -49,15 +45,10 @@
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
+    a { -webkit-tap-highlight-color: transparent; }
 
     .site-shell {
       min-height: 100vh;
@@ -69,19 +60,41 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(18px);
-      background: rgba(251, 255, 249, 0.78);
+      background: rgba(251, 255, 249, 0.72);
       border-bottom: 1px solid rgba(9, 44, 24, 0.08);
+      transition: background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .topbar.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(9, 44, 24, 0.16);
+      box-shadow: 0 18px 42px rgba(9, 44, 24, 0.10);
+    }
+
+    .scroll-progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 3px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      background: linear-gradient(90deg, var(--primary), var(--warm), var(--secondary));
+      transition: transform 80ms linear;
     }
 
     .nav {
       width: min(100%, var(--max));
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 15px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      transition: padding 220ms ease;
     }
+
+    .topbar.scrolled .nav { padding-block: 9px; }
 
     .brand {
       display: inline-flex;
@@ -103,6 +116,12 @@
       background: linear-gradient(135deg, var(--primary), var(--warm));
       box-shadow: 0 10px 30px rgba(115, 229, 127, 0.35);
       font-family: var(--font-heading);
+      transition: transform 300ms ease, box-shadow 220ms ease;
+    }
+
+    .topbar.scrolled .brand-mark {
+      transform: rotate(16deg) scale(0.92);
+      box-shadow: 0 8px 20px rgba(9, 44, 24, 0.18);
     }
 
     .nav-links {
@@ -117,13 +136,14 @@
     .nav-links a {
       padding: 10px 12px;
       border-radius: 999px;
-      transition: background 180ms ease, color 180ms ease;
+      transition: background 180ms ease, color 180ms ease, transform 180ms ease;
     }
 
     .nav-links a:hover,
     .nav-links a:focus-visible {
       background: rgba(9, 44, 24, 0.08);
       color: var(--secondary);
+      transform: translateY(-1px);
       outline: none;
     }
 
@@ -155,6 +175,12 @@
       border-color: rgba(9, 44, 24, 0.16);
     }
 
+    .footer-cta .button.secondary {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
     .nav-cta:hover,
     .button:hover {
       transform: translateY(-2px);
@@ -164,10 +190,10 @@
     .hero {
       width: min(100%, var(--max));
       margin: 0 auto;
-      padding: 68px 20px 48px;
+      padding: clamp(42px, 7vw, 82px) 20px 48px;
       display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
-      gap: 48px;
+      grid-template-columns: minmax(0, 1.06fr) minmax(300px, 0.94fr);
+      gap: 42px;
       align-items: center;
     }
 
@@ -197,26 +223,27 @@
     h1,
     h2,
     h3,
-    p {
-      margin: 0;
-    }
+    p { margin: 0; }
 
     h1 {
       margin-top: 24px;
       font-family: var(--font-heading);
-      font-size: clamp(58px, 11vw, 132px);
-      line-height: 0.88;
+      font-size: clamp(48px, 8.8vw, 112px);
+      line-height: 1;
       letter-spacing: 0;
       color: var(--secondary);
+      overflow-wrap: normal;
+      text-wrap: balance;
     }
 
     .hero-tagline {
-      margin-top: 18px;
+      margin-top: 16px;
       font-size: clamp(28px, 4vw, 54px);
-      line-height: 1.02;
+      line-height: 1.04;
       font-weight: 800;
       color: var(--ink);
       max-width: 760px;
+      text-wrap: balance;
     }
 
     .hero-tagline span {
@@ -253,9 +280,7 @@
       animation: ticker 28s linear infinite;
     }
 
-    .ticker:hover {
-      animation-play-state: paused;
-    }
+    .ticker:hover { animation-play-state: paused; }
 
     .ticker-set {
       display: flex;
@@ -344,10 +369,7 @@
       font-weight: 700;
     }
 
-    .lights {
-      display: flex;
-      gap: 7px;
-    }
+    .lights { display: flex; gap: 7px; }
 
     .lights span {
       width: 10px;
@@ -373,28 +395,9 @@
       animation: pulse 2.8s ease-in-out infinite;
     }
 
-    .line-one {
-      left: 21%;
-      top: 46%;
-      width: 58%;
-      transform: rotate(18deg);
-    }
-
-    .line-two {
-      left: 28%;
-      top: 39%;
-      width: 38%;
-      transform: rotate(-28deg);
-      animation-delay: 600ms;
-    }
-
-    .line-three {
-      left: 36%;
-      top: 61%;
-      width: 42%;
-      transform: rotate(-8deg);
-      animation-delay: 1100ms;
-    }
+    .line-one { left: 21%; top: 46%; width: 58%; transform: rotate(18deg); }
+    .line-two { left: 28%; top: 39%; width: 38%; transform: rotate(-28deg); animation-delay: 600ms; }
+    .line-three { left: 36%; top: 61%; width: 42%; transform: rotate(-8deg); animation-delay: 1100ms; }
 
     @keyframes pulse {
       0%, 100% { opacity: 0.28; filter: blur(0); }
@@ -426,21 +429,9 @@
       line-height: 1.4;
     }
 
-    .node-cashport {
-      left: 0;
-      top: 22px;
-    }
-
-    .node-ai {
-      right: 0;
-      top: 92px;
-    }
-
-    .node-human {
-      left: 22%;
-      bottom: 10px;
-      background: rgba(115, 229, 127, 0.18);
-    }
+    .node-cashport { left: 0; top: 22px; }
+    .node-ai { right: 0; top: 92px; }
+    .node-human { left: 22%; bottom: 10px; background: rgba(115, 229, 127, 0.18); }
 
     .node-icon {
       width: 38px;
@@ -503,6 +494,7 @@
       font-size: clamp(34px, 5vw, 66px);
       line-height: 1;
       letter-spacing: 0;
+      text-wrap: balance;
     }
 
     .section-copy {
@@ -513,42 +505,44 @@
 
     .mission-grid,
     .product-grid,
-    .process-grid {
+    .process-grid,
+    .sitemap-grid {
       display: grid;
       gap: 16px;
     }
 
-    .mission-grid {
-      grid-template-columns: 1.25fr 0.75fr;
-    }
+    .mission-grid { grid-template-columns: 1.12fr 0.88fr; }
 
     .mission-panel,
     .product-card,
-    .process-card {
+    .process-card,
+    .sitemap-card {
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
       background: rgba(255, 255, 255, 0.78);
       box-shadow: 0 18px 55px rgba(9, 44, 24, 0.08);
     }
 
-    .mission-panel {
-      padding: clamp(24px, 4vw, 44px);
-    }
+    .mission-panel { padding: clamp(24px, 4vw, 44px); }
 
     .mission-panel.dark {
       background: var(--secondary);
       color: #fff;
       overflow: hidden;
       position: relative;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .mission-panel.dark::after {
       content: "";
       position: absolute;
-      width: 240px;
-      height: 240px;
-      right: -90px;
-      bottom: -90px;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      bottom: -100px;
       border-radius: 50%;
       background: rgba(115, 229, 127, 0.22);
     }
@@ -562,11 +556,24 @@
       font-weight: 800;
     }
 
+    .mission-story {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 16px;
+      line-height: 1.68;
+      max-width: 600px;
+    }
+
     .metric {
       position: relative;
       z-index: 1;
       margin-top: 28px;
       display: inline-flex;
+      width: fit-content;
       padding: 10px 14px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.12);
@@ -578,10 +585,11 @@
     .mission-list {
       display: grid;
       gap: 14px;
+      align-content: stretch;
     }
 
     .mission-item {
-      padding: 18px;
+      padding: 22px;
       border-radius: var(--radius-md);
       background: var(--surface);
       border: 1px solid rgba(9, 44, 24, 0.08);
@@ -590,23 +598,24 @@
     .mission-item strong {
       display: block;
       color: var(--secondary);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      font-size: 18px;
     }
 
     .mission-item span {
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .product-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .product-card {
       position: relative;
-      min-height: 330px;
+      min-height: 520px;
       padding: 24px;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
     .product-card::before {
@@ -619,12 +628,11 @@
       background: rgba(115, 229, 127, 0.22);
     }
 
-    .product-card.ai::before {
-      background: rgba(255, 191, 0, 0.25);
-    }
+    .product-card.ai::before { background: rgba(255, 191, 0, 0.25); }
 
     .product-label {
       display: inline-flex;
+      width: fit-content;
       padding: 8px 10px;
       border-radius: 999px;
       background: var(--primary-soft);
@@ -634,7 +642,8 @@
     }
 
     .product-card h3,
-    .process-card h3 {
+    .process-card h3,
+    .sitemap-card h3 {
       margin-top: 22px;
       color: var(--secondary);
       font-size: 30px;
@@ -642,42 +651,147 @@
     }
 
     .product-card p,
-    .process-card p {
+    .process-card p,
+    .sitemap-card p {
       margin-top: 14px;
       color: var(--muted);
       line-height: 1.65;
     }
 
-    .mini-console {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 24px;
-      min-height: 76px;
-      border-radius: 18px;
+    .product-preview {
+      position: relative;
+      margin-top: auto;
+      min-height: 232px;
+      border-radius: 22px;
       background: var(--charcoal);
+      padding: 16px;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-      padding: 12px;
+      gap: 12px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
     }
 
-    .mini-console span {
-      border-radius: 12px;
+    .product-preview::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(115, 229, 127, 0.16) 0 2px, transparent 3px);
+      background-size: 30px 30px;
+      opacity: 0.55;
+    }
+
+    .preview-row,
+    .preview-chart,
+    .preview-chat,
+    .preview-command {
+      position: relative;
+      z-index: 1;
+    }
+
+    .preview-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 10px 12px;
+      border-radius: 16px;
       background: rgba(255, 255, 255, 0.10);
+      color: #fff;
     }
 
-    .mini-console span:nth-child(2) {
+    .preview-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
       background: var(--primary);
+      color: var(--secondary);
+      font-weight: 900;
     }
 
-    .mini-console span:nth-child(3) {
-      background: rgba(255, 191, 0, 0.78);
+    .preview-row strong,
+    .preview-chat strong,
+    .preview-command strong {
+      display: block;
+      font-size: 13px;
+      color: #fff;
     }
 
-    .process-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .preview-row small,
+    .preview-chat small,
+    .preview-command small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 12px;
     }
+
+    .preview-amount {
+      color: var(--primary);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .preview-chart {
+      min-height: 78px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: end;
+      gap: 8px;
+    }
+
+    .preview-chart span {
+      flex: 1;
+      min-height: 18px;
+      border-radius: 999px 999px 8px 8px;
+      background: linear-gradient(180deg, var(--primary), rgba(115, 229, 127, 0.28));
+    }
+
+    .preview-chart span:nth-child(1) { height: 42px; }
+    .preview-chart span:nth-child(2) { height: 62px; background: linear-gradient(180deg, var(--warm), rgba(255, 191, 0, 0.32)); }
+    .preview-chart span:nth-child(3) { height: 34px; }
+    .preview-chart span:nth-child(4) { height: 70px; }
+    .preview-chart span:nth-child(5) { height: 50px; background: linear-gradient(180deg, #fff, rgba(255, 255, 255, 0.22)); }
+
+    .preview-chat {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.10);
+      color: #fff;
+    }
+
+    .preview-chat.user {
+      width: 82%;
+      margin-left: auto;
+      background: rgba(115, 229, 127, 0.18);
+    }
+
+    .preview-command {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .preview-spark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--warm);
+      display: grid;
+      place-items: center;
+      color: var(--secondary);
+      font-weight: 900;
+    }
+
+    .process-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
     .process-card {
       padding: 22px;
@@ -695,10 +809,35 @@
       font-weight: 900;
     }
 
+    .sitemap-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .sitemap-card {
+      padding: 22px;
+      min-height: 230px;
+    }
+
+    .sitemap-card ul {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .sitemap-card a {
+      display: inline-flex;
+      color: var(--secondary);
+      font-weight: 700;
+      border-bottom: 1px solid rgba(9, 44, 24, 0.18);
+    }
+
+    .sitemap-card a:hover { border-color: var(--primary); }
+
     .footer-cta {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 96px auto 20px;
-      border-radius: var(--radius-xl);
+      width: min(calc(100% - 40px), 1360px);
+      min-height: 760px;
+      margin: 110px auto 20px;
+      border-radius: 36px;
       background: var(--charcoal);
       color: #fff;
       overflow: hidden;
@@ -711,8 +850,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 28% 12%, rgba(115, 229, 127, 0.22), transparent 28rem),
-        radial-gradient(circle at 92% 80%, rgba(255, 191, 0, 0.18), transparent 22rem);
+        radial-gradient(circle at 24% 8%, rgba(115, 229, 127, 0.30), transparent 32rem),
+        radial-gradient(circle at 88% 72%, rgba(255, 191, 0, 0.24), transparent 26rem),
+        linear-gradient(145deg, rgba(255,255,255,0.08), transparent 44%);
     }
 
     .footer-grid {
@@ -720,14 +860,12 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 0.92fr 1.08fr;
-      gap: 28px;
+      gap: 40px;
       align-items: center;
-      padding: clamp(28px, 5vw, 58px);
+      padding: clamp(34px, 6vw, 78px);
     }
 
-    .footer-cta h2 {
-      color: #fff;
-    }
+    .footer-cta h2 { color: #fff; }
 
     .footer-cta p {
       margin-top: 16px;
@@ -736,8 +874,49 @@
       font-size: 17px;
     }
 
+    .footer-wordmark {
+      position: relative;
+      z-index: 1;
+      padding: 0 clamp(34px, 6vw, 78px) clamp(32px, 5vw, 56px);
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 11vw, 154px);
+      line-height: 0.92;
+      color: rgba(255, 255, 255, 0.10);
+      overflow-wrap: anywhere;
+    }
+
+    .footer-sitemap {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      padding: 0 clamp(34px, 6vw, 78px) clamp(34px, 6vw, 78px);
+    }
+
+    .footer-column {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .footer-column strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer-column a,
+    .footer-column span {
+      display: block;
+      margin-top: 9px;
+      color: rgba(255, 255, 255, 0.64);
+      line-height: 1.45;
+    }
+
+    .footer-column a:hover { color: var(--primary); }
+
     .node-illustration {
-      min-height: 310px;
+      min-height: 390px;
       position: relative;
       border-radius: 26px;
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -748,7 +927,7 @@
     .node-illustration svg {
       width: 100%;
       height: 100%;
-      min-height: 310px;
+      min-height: 390px;
       display: block;
     }
 
@@ -771,9 +950,7 @@
       justify-content: flex-end;
     }
 
-    .footer-links a:hover {
-      color: var(--secondary);
-    }
+    .footer-links a:hover { color: var(--secondary); }
 
     @media (max-width: 980px) {
       .hero,
@@ -783,78 +960,49 @@
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 48px;
-      }
-
-      .console {
-        min-height: 470px;
-      }
-
-      .process-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .hero { padding-top: 48px; }
+      .console { min-height: 470px; }
+      .process-grid,
+      .sitemap-grid,
+      .footer-sitemap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 720px) {
-      .nav {
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        gap: 30px;
-      }
+      .nav { align-items: center; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hero { gap: 30px; }
+      h1 { font-size: clamp(44px, 15vw, 86px); }
 
       .hero-actions,
-      .button {
-        width: 100%;
-      }
+      .button { width: 100%; }
 
       .console {
         min-height: 520px;
         padding: 12px;
       }
 
-      .node-map {
-        min-height: 388px;
-      }
-
-      .product-node {
-        width: 78%;
-      }
-
-      .node-cashport {
-        left: 0;
-        top: 10px;
-      }
-
-      .node-ai {
-        right: 0;
-        top: 142px;
-      }
-
-      .node-human {
-        left: 8%;
-        bottom: 4px;
-      }
+      .node-map { min-height: 388px; }
+      .product-node { width: 78%; }
+      .node-cashport { left: 0; top: 10px; }
+      .node-ai { right: 0; top: 142px; }
+      .node-human { left: 8%; bottom: 4px; }
 
       .status-row,
       .product-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
+      .process-grid,
+      .sitemap-grid,
+      .footer-sitemap { grid-template-columns: 1fr; }
 
-      .section {
-        padding-top: 64px;
-      }
+      .section { padding-top: 64px; }
+      .mission-panel.dark { min-height: auto; }
+      .product-card { min-height: 560px; }
 
       .footer-cta {
         width: min(calc(100% - 24px), var(--max));
+        min-height: auto;
         margin-top: 68px;
+        border-radius: 28px;
       }
 
       .footer-links {
@@ -862,9 +1010,7 @@
         flex-direction: column;
       }
 
-      .footer-links nav {
-        justify-content: flex-start;
-      }
+      .footer-links nav { justify-content: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -891,10 +1037,12 @@
           <a href="#mission">Mission</a>
           <a href="#products">Products</a>
           <a href="#process">Process</a>
+          <a href="#sitemap">Sitemap</a>
           <a href="contact.html">Contact</a>
         </nav>
         <a class="nav-cta" href="contact.html">Start a conversation</a>
       </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
     </header>
 
     <main id="top">
@@ -982,21 +1130,31 @@
 
         <div class="mission-grid">
           <div class="mission-panel dark">
-            <p>We invent from lived problems, then refine until the answer feels obvious.</p>
+            <div>
+              <p>We invent from lived problems, then refine until the answer feels obvious.</p>
+              <div class="mission-story">
+                <span>Our mission is to build tools that help people move through daily life with more clarity and less friction. That can mean a finance product that makes shared spending easier, or an AI product that turns scattered questions into practical next steps.</span>
+                <span>We are not chasing novelty for its own sake. We are looking for the small, repeated problems that deserve better systems, then shaping them into products people can trust.</span>
+              </div>
+            </div>
             <div class="metric">Company landing page today. Product pages next.</div>
           </div>
           <div class="mission-panel mission-list">
             <div class="mission-item">
               <strong>Human first</strong>
-              <span>Start with needs, constraints, habits, and the small moments where software can help.</span>
+              <span>Start with needs, constraints, habits, and the small moments where software can help without demanding attention.</span>
             </div>
             <div class="mission-item">
               <strong>Product minded</strong>
-              <span>Design the complete experience, not just the feature list.</span>
+              <span>Design the complete experience: message, flow, interface, edge cases, and the feeling of using it repeatedly.</span>
             </div>
             <div class="mission-item">
               <strong>Quietly useful</strong>
-              <span>Build tools that reduce stress, create clarity, and earn their place.</span>
+              <span>Build tools that reduce stress, create clarity, and earn their place by becoming easier to use over time.</span>
+            </div>
+            <div class="mission-item">
+              <strong>Built to evolve</strong>
+              <span>Launch small, learn quickly, and let real use shape the next version instead of pretending the first version knows everything.</span>
             </div>
           </div>
         </div>
@@ -1016,13 +1174,32 @@
             <span class="product-label">Finance product</span>
             <h3>Cashport</h3>
             <p>Cashport helps people track expenses, split spending, and understand where money is going without making personal finance feel heavy.</p>
-            <div class="mini-console" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="product-preview" aria-label="Cashport product preview">
+              <div class="preview-row">
+                <span class="preview-icon">R</span>
+                <span><strong>Receipt scanned</strong><small>Dinner with friends</small></span>
+                <span class="preview-amount">$48.20</span>
+              </div>
+              <div class="preview-row">
+                <span class="preview-icon">S</span>
+                <span><strong>Split ready</strong><small>4 people, fair share</small></span>
+                <span class="preview-amount">$12.05</span>
+              </div>
+              <div class="preview-chart" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
           </article>
           <article class="product-card ai">
             <span class="product-label">Working name</span>
             <h3>AI*</h3>
             <p>An AI product direction for agents, search, planning, and workflows that meet people where their questions actually begin.</p>
-            <div class="mini-console" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="product-preview" aria-label="AI product preview">
+              <div class="preview-chat user"><strong>Plan my week around meals, workouts, and news.</strong><small>Prompt received</small></div>
+              <div class="preview-chat"><strong>Building a practical routine...</strong><small>Recipe + workout + briefing agents</small></div>
+              <div class="preview-command">
+                <span class="preview-spark">*</span>
+                <span><strong>3 actions prepared</strong><small>Review, edit, or launch when ready</small></span>
+              </div>
+            </div>
           </article>
         </div>
       </section>
@@ -1060,6 +1237,54 @@
         </div>
       </section>
 
+      <section class="section" id="sitemap">
+        <div class="section-header">
+          <div>
+            <div class="section-kicker">Sitemap</div>
+            <h2>Find your way around Inventadors.</h2>
+          </div>
+          <p class="section-copy">The company page stays intentionally focused while product pages are still being prepared. These are the public paths available today.</p>
+        </div>
+
+        <div class="sitemap-grid">
+          <article class="sitemap-card">
+            <div class="step-number">C</div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#top">Home</a></li>
+              <li><a href="#mission">Mission</a></li>
+              <li><a href="#process">Process</a></li>
+            </ul>
+          </article>
+          <article class="sitemap-card">
+            <div class="step-number">P</div>
+            <h3>Products</h3>
+            <ul>
+              <li><a href="#products">Cashport preview</a></li>
+              <li><a href="#products">AI* preview</a></li>
+              <li><a href="#products">Future product pages</a></li>
+            </ul>
+          </article>
+          <article class="sitemap-card">
+            <div class="step-number">S</div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="help.html">Help</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="report-an-issue.html">Report an issue</a></li>
+            </ul>
+          </article>
+          <article class="sitemap-card">
+            <div class="step-number">L</div>
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section class="footer-cta" aria-label="Footer call to action">
         <div class="footer-grid">
           <div>
@@ -1068,11 +1293,11 @@
             <p>Inventadors is building a family of tools for practical human needs. Tell us what you are trying to solve, and we will meet the idea with care.</p>
             <div class="hero-actions">
               <a class="button primary" href="contact.html">Start a conversation</a>
-              <a class="button secondary" href="help.html">Visit help</a>
+              <a class="button secondary" href="#sitemap">View sitemap</a>
             </div>
           </div>
           <div class="node-illustration" aria-hidden="true">
-            <svg viewBox="0 0 640 360" role="img">
+            <svg viewBox="0 0 640 420" role="img">
               <defs>
                 <linearGradient id="lineGradient" x1="0" x2="1" y1="0" y2="1">
                   <stop offset="0" stop-color="#73e57f" />
@@ -1086,27 +1311,55 @@
                   </feMerge>
                 </filter>
               </defs>
-              <path d="M82 256 C176 124 259 112 338 177 S491 276 566 95" fill="none" stroke="url(#lineGradient)" stroke-width="8" stroke-linecap="round" opacity="0.78" />
-              <path d="M82 256 C176 124 259 112 338 177 S491 276 566 95" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.45" />
+              <rect x="44" y="50" width="548" height="300" rx="34" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)" />
+              <path d="M82 286 C176 124 259 112 338 197 S491 306 566 105" fill="none" stroke="url(#lineGradient)" stroke-width="8" stroke-linecap="round" opacity="0.78" />
+              <path d="M82 286 C176 124 259 112 338 197 S491 306 566 105" fill="none" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.45" />
               <g filter="url(#glow)">
-                <circle cx="82" cy="256" r="38" fill="#73e57f" />
-                <circle cx="238" cy="124" r="46" fill="#ffffff" />
-                <circle cx="398" cy="214" r="42" fill="#ffbf00" />
-                <circle cx="566" cy="95" r="50" fill="#73e57f" />
+                <circle cx="82" cy="286" r="42" fill="#73e57f" />
+                <circle cx="238" cy="124" r="50" fill="#ffffff" />
+                <circle cx="398" cy="234" r="46" fill="#ffbf00" />
+                <circle cx="566" cy="105" r="54" fill="#73e57f" />
               </g>
               <g font-family="Work Sans, sans-serif" font-size="18" font-weight="800" fill="#092c18" text-anchor="middle">
-                <text x="82" y="263">Need</text>
+                <text x="82" y="293">Need</text>
                 <text x="238" y="131">Idea</text>
-                <text x="398" y="221">Tool</text>
-                <text x="566" y="102">Launch</text>
+                <text x="398" y="241">Tool</text>
+                <text x="566" y="112">Launch</text>
               </g>
               <g fill="rgba(255,255,255,0.18)">
-                <rect x="52" y="48" width="122" height="18" rx="9" />
-                <rect x="420" y="42" width="78" height="18" rx="9" />
-                <rect x="166" y="286" width="138" height="18" rx="9" />
-                <rect x="462" y="294" width="96" height="18" rx="9" />
+                <rect x="76" y="80" width="122" height="18" rx="9" />
+                <rect x="420" y="68" width="78" height="18" rx="9" />
+                <rect x="166" y="340" width="138" height="18" rx="9" />
+                <rect x="446" y="344" width="116" height="18" rx="9" />
+                <rect x="284" y="70" width="86" height="18" rx="9" />
               </g>
             </svg>
+          </div>
+        </div>
+        <div class="footer-wordmark">Inventadors</div>
+        <div class="footer-sitemap" aria-label="Footer sitemap">
+          <div class="footer-column">
+            <strong>Company</strong>
+            <a href="#top">Home</a>
+            <a href="#mission">Mission</a>
+            <a href="#process">Process</a>
+          </div>
+          <div class="footer-column">
+            <strong>Products</strong>
+            <a href="#products">Cashport</a>
+            <a href="#products">AI*</a>
+            <span>Product pages coming later</span>
+          </div>
+          <div class="footer-column">
+            <strong>Support</strong>
+            <a href="help.html">Help</a>
+            <a href="contact.html">Contact</a>
+            <a href="report-an-issue.html">Report an issue</a>
+          </div>
+          <div class="footer-column">
+            <strong>Legal</strong>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
           </div>
         </div>
       </section>
@@ -1125,7 +1378,21 @@
   </div>
 
   <script>
+    const topbar = document.querySelector('.topbar');
+    const progress = document.querySelector('.scroll-progress');
+
+    function updateHeader() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const current = window.scrollY || document.documentElement.scrollTop;
+      const percent = maxScroll > 0 ? Math.min(current / maxScroll, 1) : 0;
+      topbar.classList.toggle('scrolled', current > 12);
+      progress.style.transform = `scaleX(${percent})`;
+    }
+
     document.getElementById('year').textContent = new Date().getFullYear();
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('resize', updateHeader);
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener('click', (event) => {
