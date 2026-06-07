@@ -12,6 +12,7 @@ const ROUTES = new Map([
   ["/terms", "/terms.html"],
   ["/terms.html", "/terms.html"],
   ["/404.html", "/404.html"],
+  ["/favicon.svg", "/favicon.svg"],
 ]);
 
 const SECURITY_HEADERS = {
