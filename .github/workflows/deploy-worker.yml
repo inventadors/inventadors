@@ -9,6 +9,7 @@ on:
       - ".assetsignore"
       - ".gitignore"
       - "package.json"
+      - "src/**"
       - "wrangler.jsonc"
       - ".github/workflows/deploy-worker.yml"
   workflow_dispatch:
