@@ -6,12 +6,12 @@
   "workers_dev": true,
   "routes": [
     {
-      "pattern": "inventadors.com/*",
-      "zone_name": "inventadors.com"
+      "pattern": "inventadors.com",
+      "custom_domain": true
     },
     {
-      "pattern": "www.inventadors.com/*",
-      "zone_name": "inventadors.com"
+      "pattern": "www.inventadors.com",
+      "custom_domain": true
     }
   ],
   "observability": {
